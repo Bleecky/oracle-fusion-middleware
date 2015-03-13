@@ -5,11 +5,12 @@ class oracle_fusion_middleware::params (
     'centos', 'redhat', 'OracleLinux' : {
       $downloadpath = '/tmp'
       $installpath = '/u01/app/oracle'
-
+      $execlaunchpaths = ["/usr/bin", "/usr/sbin", "/bin", "/sbin", "/etc"]
+      
       case $::architecture {
         'x86_64' : { $downloadfile = "eclipse-${eclipsetype}-${eclipseflavour}-SR1-linux-gtk-x86_64.tar.gz" }
         default  : { $downloadfile = "eclipse-${eclipsetype}-${eclipseflavour}-SR1-linux-gtk.tar.gz" }
-      }
+      } 
     }
 
     'windows' : {
@@ -21,6 +22,7 @@ class oracle_fusion_middleware::params (
         default  : { $downloadfile = "eclipse-${eclipsetype}-${eclipseflavour}-SR1-win32.zip" }
       }
     }
+    
     default   : {
       $downloadpath = '/usr/src/'
       $installpath = '/u01/app/'
@@ -30,9 +32,8 @@ class oracle_fusion_middleware::params (
         default  : { $downloadfile = "eclipse-${eclipsetype}-${eclipseflavour}-SR1-linux-gtk.tar.gz" }
       }
     }
-  }
-  $execlaunchpaths = ["/usr/bin", "/usr/sbin", "/bin", "/sbin", "/etc"]
-  $executefrom = "/tmp/"
+  } # $::operatingsystem
   
-  $downloadurl = "http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/technology/epp/downloads/release/${eclipseflavour}/SR1/${downloadfile}"
+  $middleware_home = "${installpath}/Middleware"
+  
 }
