@@ -3,37 +3,26 @@ class oracle_fusion_middleware::params (
   ) {
   case $::operatingsystem {
     'centos', 'redhat', 'OracleLinux' : {
-      $downloadpath = '/tmp'
-      $installpath = '/u01/app/oracle'
-      $execlaunchpaths = ["/usr/bin", "/usr/sbin", "/bin", "/sbin", "/etc"]
-      
-      case $::architecture {
-        'x86_64' : { $downloadfile = "eclipse-${eclipsetype}-${eclipseflavour}-SR1-linux-gtk-x86_64.tar.gz" }
-        default  : { $downloadfile = "eclipse-${eclipsetype}-${eclipseflavour}-SR1-linux-gtk.tar.gz" }
-      } 
+      $downloadpath     = '/tmp'
+      $execlaunchpaths  = ["/usr/bin", "/usr/sbin", "/bin", "/sbin", "/etc"]
+      $ora_base         = '/u01/app/oracle'
+      $src_dir          = '/u01/app/stage' 
     }
 
     'windows' : {
       $downloadpath = 'C:\temp'
-      $installpath = 'C:\Program Files (x86)\Oracle'
-
-      case $::architecture {
-        'x86_64' : { $downloadfile = "eclipse-${eclipsetype}-${eclipseflavour}-SR1-win32-x86_64.zip" }
-        default  : { $downloadfile = "eclipse-${eclipsetype}-${eclipseflavour}-SR1-win32.zip" }
-      }
+      $ora_base     = 'C:\app\oracle'
+      $src_dir      = 'C:\app\stage'
     }
     
     default   : {
       $downloadpath = '/usr/src/'
-      $installpath = '/u01/app/'
-
-      case $::architecture {
-        'x86_64' : { $downloadfile = "eclipse-${eclipsetype}-${eclipseflavour}-SR1-linux-gtk-x86_64.tar.gz" }
-        default  : { $downloadfile = "eclipse-${eclipsetype}-${eclipseflavour}-SR1-linux-gtk.tar.gz" }
-      }
+      $ora_base     = '/u01/app/oracle'
+      $src_dir      = '/u01/app/stage'
     }
   } # $::operatingsystem
   
-  $middleware_home = "${installpath}/Middleware"
+  
+  $middleware_home = "${ora_base}/Middleware"
   
 }
