@@ -22,7 +22,7 @@ class oracle_fusion_middleware (
 {
 
   file {[$base_dir,$ora_base,$src_dir]:
-    ensure  => present,
+    ensure  => directory,
     owner   => 'vagrant',
     group   => 'vagrant',
   }
