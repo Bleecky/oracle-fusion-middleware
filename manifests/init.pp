@@ -11,6 +11,7 @@
 # Sample Usage:
 #
 class oracle_fusion_middleware (
+  $base_dir         = oracle_fusion_middleware::params::base_dir,
   $ora_base         = oracle_fusion_middleware::params::ora_base,
   $middleware_home  = oracle_fusion_middleware::params::middleware_home,
   $src_dir          = oracle_fusion_middleware::src_dir
@@ -19,16 +20,18 @@ class oracle_fusion_middleware (
   inherits oracle_fusion_middleware::params  
 
 {
+
+  file {[$base_dir,$ora_base,$src_dir]:
+    ensure  => present,
+    owner   => 'vagrant',
+    group   => 'vagrant',
+  }
+  
   # orainst.loc required by all installations
-  file {'/etc/oraInst.loc': 
+  file {"${ora_base}/oraInst.loc": 
     ensure  => present,
     owner   => 'root',
     group   => 'root',
     content => template('oracle_fusion_middleware/oraInst.loc.erb')
-  }
-  file {['/u01/app','/u01/app/stage']:
-    ensure  => present,
-    owner   => 'oracle',
-    group   => 'dba',
   }
 }

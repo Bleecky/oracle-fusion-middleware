@@ -3,22 +3,23 @@ class oracle_fusion_middleware::params (
   ) {
   case $::operatingsystem {
     'centos', 'redhat', 'OracleLinux' : {
-      $downloadpath     = '/tmp'
+      $base_dir         = '/u01/app'
       $execlaunchpaths  = ["/usr/bin", "/usr/sbin", "/bin", "/sbin", "/etc"]
-      $ora_base         = '/u01/app/oracle'
-      $src_dir          = '/u01/app/stage' 
+      $ora_base         = "${base_dir}/oracle"
+      $src_dir          = "${base_dir}/stage"
     }
 
     'windows' : {
-      $downloadpath = 'C:\temp'
-      $ora_base     = 'C:\app\oracle'
-      $src_dir      = 'C:\app\stage'
+      $base_dir     = 'C:\app'
+      $ora_base     = "${base_dir}\\oracle"
+      $src_dir      = "${base_dir}\stage"
     }
     
-    default   : {
-      $downloadpath = '/usr/src/'
-      $ora_base     = '/u01/app/oracle'
-      $src_dir      = '/u01/app/stage'
+    default : {
+      $base_dir     = '/u01/app'
+      $execlaunchpaths  = ["/usr/bin", "/usr/sbin", "/bin", "/sbin", "/etc"]
+      $ora_base     = "${base_dir}/oracle"
+      $src_dir      = "${base_dir}/stage"
     }
   } # $::operatingsystem
   
