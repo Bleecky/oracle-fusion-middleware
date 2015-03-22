@@ -21,14 +21,14 @@ class oracle_fusion_middleware (
 
 {
 
-  file {['/usr/local/oracle','/usr/local/stage']:
+  file {['/tmp/oracle','/tmp/stage']:
     ensure  => directory,
     owner   => 'vagrant',
     group   => 'vagrant',
   }
   
   # orainst.loc required by all installations
-  file {'/usr/local/oracle/oraInst.loc': 
+  file {'/tmp/oracle/oraInst.loc': 
     ensure  => present,
     owner   => 'root',
     group   => 'root',
