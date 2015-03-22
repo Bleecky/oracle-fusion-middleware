@@ -9,7 +9,7 @@ class oracle_fusion_middleware::domain_config {
 	    }
     }
     
-    file {"${ora_base}/ds.properties": 
+    file {'/usr/local/oracle/ds.properties': 
     ensure  => present,
     owner   => 'root',
     group   => 'root',
