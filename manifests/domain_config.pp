@@ -1,11 +1,11 @@
 class oracle_fusion_middleware::domain_config { 
     $ds_list = 'datasource1'
     $ds_hash = {
-	    'datasource1'                => {
+	    'datasource1' => {
 	      host     => "puppetagent01",
 	      sid      => "bleecky",
 	      user     => "bleecky",
-	      passwrod => "s3cr3t",
+	      password => "s3cr3t",
 	    }
     }
     

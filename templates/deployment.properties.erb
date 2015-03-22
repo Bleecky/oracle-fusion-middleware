@@ -1,4 +1,4 @@
 ds.list=<%= @ds_list %>
-<% @ds_hash.each do |val| -%>
- <%= val %>
+<% @ds_hash.each do |ds| -%>
+ oscustom.datasource(''<%= ds['host'] %>'',''<%= ds['sid'] %>'',''<%= ds['user'] %>'',''<%= ds['password'] %>'')
 <% end -%>
