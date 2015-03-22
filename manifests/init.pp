@@ -34,4 +34,6 @@ class oracle_fusion_middleware (
     group   => 'root',
     content => template('oracle_fusion_middleware/oraInst.loc.erb')
   }
+  
+  class {'oracle_fusion_middleware::domain_config':}
 }
