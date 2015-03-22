@@ -1,0 +1,1 @@
+include oracle_fusion_middleware
