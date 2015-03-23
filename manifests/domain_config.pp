@@ -21,10 +21,10 @@ class oracle_fusion_middleware::domain_config {
     $ds_list = 'datasource1'
     $config = hiera_hash('weblogic')
     
-    file {'/tmp/oracle/ds.properties': 
+    file {'/tmp/oracle/domain-configuration.py': 
     ensure  => present,
     owner   => 'root',
     group   => 'root',
-    content => template('oracle_fusion_middleware/deployment.properties.erb')
+    content => template('oracle_fusion_middleware/domain-configuration.py.erb')
   }
 }
