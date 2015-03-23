@@ -1,3 +1,8 @@
-ds.list=<%= @ds_list %>
-ds.config=<%= @ds_config %>
-oscustom.datasource(<%= @ds_config['host'] %>)
+<% @config['datasources'].each do | ds_config | -%>
+ds.<%= ds_config['name'] %>.name.<%= ds_config['name'] %>
+ds.<%= ds_config['name'] %>.host.<%= ds_config['host'] %>
+ds.<%= ds_config['name'] %>.sid.<%= ds_config['sid'] %>
+ds.<%= ds_config['name'] %>.user.<%= ds_config['user'] %>
+ds.<%= ds_config['name'] %>.pwd.<%= ds_config['pwd'] %>
+
+<% end -%>
