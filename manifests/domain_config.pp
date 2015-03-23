@@ -1,13 +1,7 @@
 class oracle_fusion_middleware::domain_config { 
     $ds_list = 'datasource1'
-    $ds_hash = {
-	    'datasource1' => {
-	      host     => "puppetagent01",
-	      sid      => "bleecky",
-	      user     => "bleecky",
-	      password => "s3cr3t",
-	    }
-    }
+    $config = hiera_hash('weblogic')
+    $ds_config = $config['datasources']['name']
     
     file {'/tmp/oracle/ds.properties': 
     ensure  => present,
