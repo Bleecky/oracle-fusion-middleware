@@ -1,0 +1,3 @@
+fixtures:
+  symlinks:
+    oracle-fusion-middleware: "#{source_dir}"
