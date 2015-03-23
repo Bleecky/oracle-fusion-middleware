@@ -1,0 +1,6 @@
+#===============================================================================
+# Configure Datasources
+#===============================================================================
+<% @config['datasources'].each do | ds_config | -%>
+oscustom.configureDataSource('<%= ds_config['name'] %>', '<%= ds_config['jdbc_driver'] %>', 'jdbc/<%= ds_config['name'] %>', '<%= ds_config['user'] %>', '<%= ds_config['pwd'] %>', 'jdbc:thin:oracle@<%= ds_config['name'] %>:1521//<%= ds_config['sid'] %>')
+<% end -%>
