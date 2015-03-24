@@ -64,7 +64,7 @@ oscustom.configureDataSource(
   'jdbc/<%= ds_name %>',
   '<%= ds_config['user'] %>',
   '<%= ds_config['pwd'] %>',
-  '<%= jdbc_string(ds_config['jdbc_driver'], ds_config['host'], ds_config['port'], ds_config['sid']) %>')
+  '<%= jdbc_string(ds_config['jdbc_driver'], ds_config['host'], ds_config['port'], (ds_config['sid'] or ds_config['database'])) %>')
 <% end -%>
 
 #===============================================================================

@@ -18,7 +18,7 @@ describe 'deployment.properties.erb' do
           'host'        => 'host2.example.com',
           'jdbc_driver' => 'jdbc:postgresql',
           'pwd'         => 'PWD2',
-          'sid'         => 'SID2',
+          'database'    => 'SID2',
           'user'        => 'USER2',
         },
       }
