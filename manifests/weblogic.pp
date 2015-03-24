@@ -52,6 +52,6 @@ class oracle_fusion_middleware::weblogic (
     creates => "${middleware_home}/registry.xml",
     user    => 'oracle',
     timeout => $timeout,
-    require => File['/tmp/wls-silent.xml'],
+    require => File['weblogic: Response file'],
   }
 }
