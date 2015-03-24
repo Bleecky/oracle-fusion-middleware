@@ -1,21 +1,23 @@
 # Example YAML Syntax for data source configuration
+#   Note: sid and database are interchangable, if both are specified,
+#         sid takes priority
 # ---
 # weblogic:
 #   datasources:
 #   -
-#     name:         bleecky1
-#     jdbc_driver:  oracle.driver.something
-#     host:         host1
-#     sid:          db1
-#     user:         user1
-#     pwd:          s3cr3t1
+#     bleecky1:
+#       host:         host1.example.com
+#       jdbc_driver:  oracle.driver.something
+#       sid:          DB1
+#       user:         user1
+#       pwd:          s3cr3t1
 #   -
-#     name:         bleecky2
-#     jdbc_driver:  oracle.driver.something
-#     host:         host2
-#     sid:          db2
-#     user:         user2
-#     pwd:          s3cr3t2
+#     bleecky2:
+#       database:     DB2
+#       host:         host2.example.com
+#       jdbc_driver:  oracle.driver.something
+#       user:         user2
+#       pwd:          s3cr3t2
 
 class oracle_fusion_middleware::domain_config { 
     $ds_list = 'datasource1'
