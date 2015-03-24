@@ -10,7 +10,6 @@ describe 'domain-configuration.py' do
         'datasource1' => {
           'host'        => 'host1.example.com',
           'jdbc_driver' => 'oracle',
-          'name'        => 'datasource1',
           'pwd'         => 'PWD1',
           'sid'         => 'SID1',
           'user'        => 'USER1',
@@ -18,7 +17,6 @@ describe 'domain-configuration.py' do
         'datasource2' => {
           'host'        => 'host2.example.com',
           'jdbc_driver' => 'jdbc:postgresql',
-          'name'        => 'datasource2',
           'pwd'         => 'PWD2',
           'sid'         => 'SID2',
           'user'        => 'USER2',
