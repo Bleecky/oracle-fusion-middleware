@@ -21,17 +21,19 @@ class oracle_fusion_middleware (
 
 {
 
-  file {[$base_dir,$ora_base,$src_dir]:
-    ensure  => present,
+  file {['/tmp/oracle','/tmp/stage']:
+    ensure  => directory,
     owner   => 'vagrant',
     group   => 'vagrant',
   }
   
   # orainst.loc required by all installations
-  file {"${ora_base}/oraInst.loc": 
+  file {'/tmp/oracle/oraInst.loc': 
     ensure  => present,
     owner   => 'root',
     group   => 'root',
     content => template('oracle_fusion_middleware/oraInst.loc.erb')
   }
+  
+  class {'oracle_fusion_middleware::domain_config':}
 }

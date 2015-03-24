@@ -1,4 +1,5 @@
-ds.list=<%= @ds_list %>
-<% @ds_hash.each do |val| -%>
- <%= val %>
-<% end -%>
+<%- @config['datasources'].sort.each do | datasource, h | -%>
+    <%- h.sort.each do | k,v | -%>
+ds.<%= datasource %>.<%= k %> = <%= v %>
+    <%- end -%>
+<%- end -%>
