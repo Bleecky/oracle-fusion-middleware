@@ -4,6 +4,6 @@
    <bea-installer> 
      <input-fields>
        <data-value name="BEAHOME" value="<%= @middleware_home %>" />
-       <data-value name="WLS_INSTALL_DIR" value="<%= @middleware_home %>/<%= @weblogic_version[/\.[0-9]$/] %>" />
+       <data-value name="WLS_INSTALL_DIR" value="<%= @middleware_home %>/wlserver_<%= @weblogic_version[/([\d.]+)\..*$/,1] %>" />
     </input-fields> 
 </bea-installer>
