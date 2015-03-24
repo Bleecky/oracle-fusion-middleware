@@ -1,3 +1,5 @@
 fixtures:
   symlinks:
     oracle-fusion-middleware: "#{source_dir}"
+  repositories:
+    functions: "http://stash.ordsvy.gov.uk/scm/in/functions.git"

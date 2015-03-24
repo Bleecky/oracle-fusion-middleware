@@ -1,6 +1,34 @@
 #===============================================================================
 # Configure Datasources
 #===============================================================================
-<% @config['datasources'].each do | ds_config | -%>
-oscustom.configureDataSource('<%= ds_config['name'] %>', '<%= ds_config['jdbc_driver'] %>', 'jdbc/<%= ds_config['name'] %>', '<%= ds_config['user'] %>', '<%= ds_config['pwd'] %>', 'jdbc:thin:oracle@<%= ds_config['name'] %>:1521//<%= ds_config['sid'] %>')
+<%-
+def jdbc_string(db_type, host_name, db_port, db_name)
+  case db_type
+    when /oracle/i
+      if db_port.nil? || db_port.to_s.empty?
+        db_port = 1521
+      end
+      jdbc_string = "jdbc:oracle:thin:@//#{host_name}:#{db_port}/#{db_name}"
+
+    when /postgres(?:ql)?/i
+      if db_port.nil? || db_port.to_s.empty?
+        db_port = 5432
+      end
+      jdbc_string = "jdbc:postgresql://#{host_name}:#{db_port}/#{db_name}"
+
+    else
+      jdbc_string = "UNKNOWN db_type #{db_type}"
+      #raise Puppet::ParseError, "Failed to construct JDBC connect string"
+  end # End of case
+  return jdbc_string
+end
+-%>
+<% @config['datasources'].sort.each do | ds_name, ds_config | -%>
+oscustom.configureDataSource(
+  '<%= ds_name %>',
+  '<%= ds_config['jdbc_driver'] %>',
+  'jdbc/<%= ds_name %>',
+  '<%= ds_config['user'] %>',
+  '<%= ds_config['pwd'] %>',
+  '<%= jdbc_string(ds_config['jdbc_driver'], ds_config['host'], ds_config['port'], ds_config['sid']) %>')
 <% end -%>
