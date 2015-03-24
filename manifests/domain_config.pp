@@ -19,11 +19,11 @@
 #       user:         user2
 #       pwd:          s3cr3t2
 
-class oracle_fusion_middleware::domain_config { 
+class oracle_fusion_middleware::domain_config {
     $ds_list = 'datasource1'
     $config = hiera_hash('weblogic')
-    
-    file {'/tmp/oracle/domain-configuration.py': 
+
+    file {'/tmp/oracle/domain-configuration.py':
     ensure  => present,
     owner   => 'root',
     group   => 'root',

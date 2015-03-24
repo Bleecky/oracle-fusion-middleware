@@ -17,18 +17,18 @@ class oracle_fusion_middleware (
   $src_dir         = oracle_fusion_middleware::src_dir
 )
 
-  inherits oracle_fusion_middleware::params  
+  inherits oracle_fusion_middleware::params
 
 {
 
   file {['/tmp/oracle','/tmp/stage']:
-    ensure  => directory,
-    owner   => 'nobody',
-    group   => 'nobody',
+    ensure => directory,
+    owner  => 'nobody',
+    group  => 'nobody',
   }
 
   # orainst.loc required by all installations
-  file {'/tmp/oracle/oraInst.loc': 
+  file {'/tmp/oracle/oraInst.loc':
     ensure  => present,
     owner   => 'root',
     group   => 'root',

@@ -1,3 +1,5 @@
+# Class: oracle_fusion_middleware::weblogic
+#
 class oracle_fusion_middleware::weblogic (
   $install_path     = $::oracle_fusion_middleware::params::ora_base,
   $timeout          = undef,
