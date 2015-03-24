@@ -5,6 +5,7 @@ class oracle_fusion_middleware::weblogic (
   $timeout          = undef,
   $weblogic_version = $::oracle_fusion_middleware::params::default_weblogic_version,
 ){
+  $exec_path          = $::oracle_fusion_middleware::params::env_path
   $middleware_home    = $::oracle_fusion_middleware::middleware_home
   $middleware_src_dir = $::oracle_fusion_middleware::src_dir
 
@@ -45,11 +46,7 @@ class oracle_fusion_middleware::weblogic (
   }
 
   exec {'weblogic:Install Server':
-    path    => ['/usr/local/bin',
-                '/bin',
-                '/usr/bin',
-                '/usr/local/sbin',
-                '/usr/sbin'],
+    path    => $exec_path,
     command => "java -jar ${weblogic_jar} ${install_args}",
     creates => "${middleware_home}/registry.xml",
     user    => 'oracle',
