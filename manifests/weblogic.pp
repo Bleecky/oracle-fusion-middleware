@@ -1,11 +1,11 @@
 # Class: oracle_fusion_middleware::weblogic
 #
 class oracle_fusion_middleware::weblogic (
-  $install_path     = $::oracle_fusion_middleware::params::ora_base,
+  $install_path     = $::oracle_fusion_middleware::ora_base,
   $timeout          = undef,
-  $weblogic_version = $::oracle_fusion_middleware::params::default_weblogic_version,
+  $weblogic_version = $::oracle_fusion_middleware::default_weblogic_version,
 ){
-  $exec_path          = $::oracle_fusion_middleware::params::env_path
+  $exec_path          = $::oracle_fusion_middleware::env_path
   $middleware_home    = $::oracle_fusion_middleware::middleware_home
   $middleware_src_dir = $::oracle_fusion_middleware::src_dir
 

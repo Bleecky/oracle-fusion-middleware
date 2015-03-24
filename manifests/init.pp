@@ -28,9 +28,10 @@ class oracle_fusion_middleware (
   }
 
   # orainst.loc required by all installations
-  file {'/tmp/oracle/oraInst.loc':
+  file {'oracle_fusion_middleware: oraInst.loc':
     ensure  => present,
     owner   => 'root',
+    path    => $ora_inst,
     group   => 'root',
     content => template('oracle_fusion_middleware/oraInst.loc.erb')
   }

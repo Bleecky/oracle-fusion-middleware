@@ -1,15 +1,15 @@
 #===============================================================================
-# 
+#
 # Name : oscustom.py
 # Author : Peter Bleeck <peter.bleeck@os.uk>
 # Date : March '14
 # Description : All custom functions required by os.uk added to WLST Library
-# 
+#
 #===============================================================================
 
 #===============================================================================
 # Define functions for setting up datasources
-# Usage : 
+# Usage :
 #  configureDataSource(dsName, jdbcDriver, 'jdbc/' + dsName, dbUser, dbUserPasswd, dbURL)
 #===============================================================================
 def configureDataSource(dsName, JDBCDriver, dsJNDI, dbUser, dbPasswd, dbURL):
