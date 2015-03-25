@@ -1,6 +1,0 @@
-<%- @config['datasources'].sort.each do | datasource, h | -%>
-    <%- h.sort.each do | k,v | -%>
-    <%- k = 'sid' if (k == 'database') -%>
-ds.<%= datasource %>.<%= k %> = <%= v %>
-    <%- end -%>
-<%- end -%>

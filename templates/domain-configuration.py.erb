@@ -2,17 +2,22 @@
 # Create Domain
 #===============================================================================
 
-readTemplate('path/to/template')
+readTemplate('<%= @middleware_home %>/wlserver_<%= @weblogic_version[/([\d.]+)\..*$/,1] %>/common/templates/domains/wls.jar')
 
 #===============================================================================
 # Configure Admin Domain
 #===============================================================================
 
+print '[INFO] Set Admin User'
+cd('/')
+cmo=cd('Security/base_domain/User/weblogic')
+cmo.setPassword('<%= @weblogic_admin_pwd %>')
+
 #===============================================================================
 # Configure Machines
 #===============================================================================
 
-<% @config['datasources'].each do | ds_config | -%>
+<% @config['machines'].each do | ds_config | -%>
 oscustom.configureMachine()
 <% end -%>
 
@@ -20,7 +25,7 @@ oscustom.configureMachine()
 # Configure Servers
 #===============================================================================
 
-<% @config['datasources'].each do | ds_config | -%>
+<% @config['servers'].each do | ds_config | -%>
 oscustom.configureServers()
 <% end -%>
 
@@ -28,7 +33,7 @@ oscustom.configureServers()
 # Configure Clusters
 #===============================================================================
 
-<% @config['datasources'].each do | ds_config | -%>
+<% @config['clusters'].each do | ds_config | -%>
 oscustom.configureClusters()
 <% end -%>
 
@@ -71,3 +76,6 @@ oscustom.configureDataSource(
 # Write and Save the Domain
 #===============================================================================
 
+print '[INFO] Writing the domain configuration'
+writeDomain('<%= @middleware_home %>/user_projects/domains/<%= @config['domain']['name'] %>')
+closeTemplate()

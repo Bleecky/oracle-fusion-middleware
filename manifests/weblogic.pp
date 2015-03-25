@@ -6,6 +6,7 @@ class oracle_fusion_middleware::weblogic (
   $weblogic_version = $::oracle_fusion_middleware::default_weblogic_version,
 ){
   $exec_path          = $::oracle_fusion_middleware::env_path
+  $ora_inst_path      = $::oracle_fusion_middleware::ora_inst
   $middleware_home    = $::oracle_fusion_middleware::middleware_home
   $middleware_src_dir = $::oracle_fusion_middleware::src_dir
 
@@ -14,7 +15,7 @@ class oracle_fusion_middleware::weblogic (
       $weblogic_jar       = 'wls1213_generic.jar'
       $response_file      = 'wls-silent.rsp'
       $response_file_path = "${middleware_src_dir}/${response_file}"
-      $install_args       = "-silent -invPtrLoc /etc/oraInst.loc -responseFile ${response_file_path}"
+      $install_args       = "-silent -invPtrLoc ${ora_inst_path} -responseFile ${response_file_path}"
     }
     '12.1.1' : {
       $weblogic_jar       = 'wls1211_generic.jar'
@@ -32,7 +33,7 @@ class oracle_fusion_middleware::weblogic (
       $weblogic_jar       = 'wls1213_generic.jar'
       $response_file      = 'wls-silent.rsp'
       $response_file_path = "${middleware_src_dir}/${response_file}"
-      $install_args       = "-silent -invPtrLoc /etc/oraInst.loc -responseFile ${response_file_path}"
+      $install_args       = "-silent -invPtrLoc ${ora_inst_path} -responseFile ${response_file_path}"
     }
   } # weblogic version
 
